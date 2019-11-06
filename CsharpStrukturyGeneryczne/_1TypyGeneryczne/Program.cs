@@ -10,6 +10,31 @@ namespace _1TypyGeneryczne
     {
         static void Main(string[] args)
         {
+            var kolejka = new KolejkaKolowa(pojemnosc: 3);
+
+            while (true) //pętla nieskończona
+            {
+                var wartosc = 0.0;
+                var wartoscWejsciowa = Console.ReadLine();
+
+                if (double.TryParse(wartoscWejsciowa, out wartosc))  //liczba która zostanie wprowadzona przez użytkownika zostaje sparsowana do zmiennej wartosc
+                {
+                    kolejka.Zapisz(wartosc);
+                    continue; //wykonać kolejną iterację dla pętli nieskończonej
+                }
+                break;    //wyjście z pętli w przypadku gdy użytkownik wciśnie enter lub jakiś ciąg znaów 
+
+            }
+
+            Console.WriteLine("W naszej kolejce jest:");
+            while (!kolejka.JestPusty)
+            {
+                Console.WriteLine("\t\t" + kolejka.Czytaj());   //  \t\t tabulatory
+            }
+
+
+            Console.ReadKey();
         }
+
     }
 }
